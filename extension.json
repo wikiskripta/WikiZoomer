@@ -1,0 +1,39 @@
+{
+	"name": "WikiZoomer",
+	"version": "1.0",
+	"author": "[https://www.wikiskripta.eu/w/User:Josmart Josef Martiňák]",
+	"url": "https://bitbucket.org/wikiskripta/wikizoomer",
+	"descriptionmsg": "wikizoomer-desc",
+	"type": "other",
+	"license-name": "MIT",
+	"status": "stable",
+	"requires": {
+		"MediaWiki": ">= 1.29.0"
+	},
+	"MessagesDirs": {
+		"WikiZoomer": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"WikiZoomerHooks": "WikiZoomerHooks.php"
+	},
+	"ResourceModules": {
+		"ext.WikiZoomer": {
+			"styles": [
+				"magiczoomplus/magiczoomplus/magiczoomplus.css"
+			],
+			"scripts": [
+				"magiczoomplus/magiczoomplus/magiczoomplus.js"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "WikiZoomer"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "WikiZoomerHooks::zoomIt"
+	},
+	"manifest_version": 2
+}
