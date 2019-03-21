@@ -4,7 +4,7 @@ Mediawiki extension.
 
 ## Description
 
-* Version 1.0
+* Version 1.1
 * Extension can zoom images.
 * Images for zooming must have "(zoom)" at the end of the caption
 * Not available for "thumb" option.
@@ -33,7 +33,11 @@ http://www.magictoolbox.com/magiczoomplus
 
 This extension is available in English and Czech language. For other languages, just edit files in /i18n/ folder.
 
+## Relase Notes
+
+Fix for MW 1.32.
+
 ## Authors and license
 
 * [Josef Martiňák](https://www.wikiskripta.eu/w/User:Josmart)
-* MIT License, Copyright (c) 2018 First Faculty of Medicine, Charles University
+* MIT License, Copyright (c) 2019 First Faculty of Medicine, Charles University

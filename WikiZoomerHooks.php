@@ -24,6 +24,7 @@ class WikiZoomerHooks {
 		}
 		
 		// get list of <a href="" ...><img src="" ... /></a> and add magiczoom parameters
+		//<a href="/w/Soubor:Z_9-14_AML_20x_oznaceno.jpg" class="image" title="AML (zoom)"><img alt="AML (zoom)" src="/images/thumb/1/1e/Z_9-14_AML_20x_oznaceno.jpg/200px-Z_9-14_AML_20x_oznaceno.jpg" width="200" height="150" srcset="/images/thumb/1/1e/Z_9-14_AML_20x_oznaceno.jpg/300px-Z_9-14_AML_20x_oznaceno.jpg 1.5x, /images/thumb/1/1e/Z_9-14_AML_20x_oznaceno.jpg/400px-Z_9-14_AML_20x_oznaceno.jpg 2x" data-file-width="2560" data-file-height="1920" /></a>
 		$tmp =  preg_replace_callback( '/\<a.*?href="([^"]*)"[^\>]*\>\<img.*?alt="([^"]*)".*?\/\>\<\/a\>/', 'self::insertZoomer', $out->mBodytext );
 		if( $tmp ) {
 			$out->addModules('ext.WikiZoomer');
@@ -53,10 +54,9 @@ class WikiZoomerHooks {
 			if( !empty( $wgScriptPath ) ) {
 				$wikipath .= "/$wgScriptPath";
 			}
-			$iinfo = file_get_contents( "$wikipath/api.php?action=query&titles=File:$imageName&prop=imageinfo&iiprop=url" );
+			$iinfo = file_get_contents( "$wikipath/api.php?action=query&titles=File:$imageName&prop=imageinfo&iiprop=url&format=json" );
 			
-			//if( preg_match( "/url=&quot;\<a[^\>]*\>([^\>]*)\<\/a\>&quot;/",$iinfo, $m ) ) {
-			if( preg_match( "/&quot;url&quot;.*?&quot;(.*?)&quot;/",$iinfo, $m ) ) {
+			if( preg_match( "/\"url\":\"([^\"]*)\"/",$iinfo, $m ) ) {
 				// apply magiczoom
 				$bigPhoto = $m[1];
 				if($zoomplus) {
