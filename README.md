@@ -33,11 +33,13 @@ http://www.magictoolbox.com/magiczoomplus
 
 This extension is available in English and Czech language. For other languages, just edit files in /i18n/ folder.
 
-## Relase Notes
+## Release Notes
 
-Fix for MW 1.32.
+### 1.1
+
+* Fix for MW 1.32.
 
 ## Authors and license
 
 * [Josef Martiňák](https://www.wikiskripta.eu/w/User:Josmart)
-* MIT License, Copyright (c) 2019 First Faculty of Medicine, Charles University
+* MIT License, Copyright (c) 2023 First Faculty of Medicine, Charles University

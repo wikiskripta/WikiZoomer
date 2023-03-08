@@ -4,8 +4,6 @@
  * All hooked functions used by WikiZoomer
  * @ingroup Extensions
  * @author Josef Martiňák
- * @license MIT
- * @file
  */
 
 class WikiZoomerHooks {
@@ -16,13 +14,13 @@ class WikiZoomerHooks {
 	 * @param $skin Skin: instance of Skin 
 	 */
 	public static function zoomIt( &$out,&$skin ) {
-		
+
 		// If not article, return
 		$title = $out->getTitle();
 		if (!$out->isArticle() || $title->isMainPage() ) {
 			return true;
 		}
-		
+
 		// get list of <a href="" ...><img src="" ... /></a> and add magiczoom parameters
 		//<a href="/w/Soubor:Z_9-14_AML_20x_oznaceno.jpg" class="image" title="AML (zoom)"><img alt="AML (zoom)" src="/images/thumb/1/1e/Z_9-14_AML_20x_oznaceno.jpg/200px-Z_9-14_AML_20x_oznaceno.jpg" width="200" height="150" srcset="/images/thumb/1/1e/Z_9-14_AML_20x_oznaceno.jpg/300px-Z_9-14_AML_20x_oznaceno.jpg 1.5x, /images/thumb/1/1e/Z_9-14_AML_20x_oznaceno.jpg/400px-Z_9-14_AML_20x_oznaceno.jpg 2x" data-file-width="2560" data-file-height="1920" /></a>
 		$tmp =  preg_replace_callback( '/\<a.*?href="([^"]*)"[^\>]*\>\<img.*?alt="([^"]*)".*?\/\>\<\/a\>/', 'self::insertZoomer', $out->mBodytext );
@@ -44,7 +42,7 @@ class WikiZoomerHooks {
 			$arr = preg_split( "/File:|Soubor:|Image:/i", $matches[1] );
 			$imageName = $arr[1];
 			// get url of full sized image
-			
+
 			// get wiki path
 			if( strpos($wgServer,"http") === false && strpos($wgServer,"https") === false ) {
 				$wikipath = "https:" . $wgServer;
@@ -55,7 +53,7 @@ class WikiZoomerHooks {
 				$wikipath .= "/$wgScriptPath";
 			}
 			$iinfo = file_get_contents( "$wikipath/api.php?action=query&titles=File:$imageName&prop=imageinfo&iiprop=url&format=json" );
-			
+
 			if( preg_match( "/\"url\":\"([^\"]*)\"/",$iinfo, $m ) ) {
 				// apply magiczoom
 				$bigPhoto = $m[1];
@@ -71,8 +69,6 @@ class WikiZoomerHooks {
 				$output = preg_replace( '/ \(zoom\)/i', '', $output );
 			}
 		}
-
 		return $output;
 	}
-
 }
