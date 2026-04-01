@@ -1,14 +1,14 @@
 {
 	"name": "WikiZoomer",
-	"version": "1.0",
+	"version": "1.2",
 	"author": "[https://www.wikiskripta.eu/w/User:Josmart Josef Martiňák]",
-	"url": "https://bitbucket.org/wikiskripta/wikizoomer",
+	"url": "https://github.com/wikiskripta/WikiZoomer",
 	"descriptionmsg": "wikizoomer-desc",
 	"type": "other",
 	"license-name": "MIT",
 	"status": "stable",
 	"requires": {
-		"MediaWiki": ">= 1.29.0"
+		"MediaWiki": ">= 1.45.0"
 	},
 	"MessagesDirs": {
 		"WikiZoomer": [
